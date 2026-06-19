@@ -10,6 +10,15 @@ NAV_LINKS = [
     {"name": "Hobbies", "endpoint": "hobbies"},
 ]
 
+EDUCATION = [
+    {
+        "school": "NYU Tandon School of Engineering",
+        "degree": "B.S. in Computer Science",
+        "date": "Expected May 2027",
+        "details": ["Minors in Mathematics and Cybersecurity"],
+    },
+]
+
 
 @app.context_processor
 def inject_nav_links():
@@ -18,7 +27,7 @@ def inject_nav_links():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
+    return render_template('index.html', title="MLH Fellow", education=EDUCATION, url=os.getenv("URL"))
 
 
 @app.route('/hobbies')
