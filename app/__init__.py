@@ -19,6 +19,19 @@ EDUCATION = [
     },
 ]
 
+EXPERIENCES = [
+    {
+        "role": "MLH Fellow",
+        "organization": "Major League Hacking Fellowship",
+        "date": "June 2026 – August 2026",
+    },
+    {
+        "role": "Data Structures Teaching Assistant",
+        "organization": "NYU Tandon School of Engineering",
+        "date": "September 2024 – May 2026",
+    },
+]
+
 
 @app.context_processor
 def inject_nav_links():
@@ -27,7 +40,13 @@ def inject_nav_links():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", education=EDUCATION, url=os.getenv("URL"))
+    return render_template(
+        'index.html',
+        title="MLH Fellow",
+        education=EDUCATION,
+        experiences=EXPERIENCES,
+        url=os.getenv("URL"),
+    )
 
 
 @app.route('/hobbies')

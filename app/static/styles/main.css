@@ -145,6 +145,10 @@ body {
     box-shadow: 0 8px 24px rgba(29, 83, 159, 0.12);
 }
 
+.info-card + .info-card {
+    margin-top: 16px;
+}
+
 .info-card h3 {
     font-size: 22px;
     margin: 0 0 8px 0;
@@ -215,6 +219,15 @@ body {
 }
 
 @media (max-width: 800px) {
+    .info-card {
+        display: block;
+    }
+
+    .info-card span {
+        display: block;
+        margin-top: 10px;
+    }
+
     .hobby-grid {
         grid-template-columns: 1fr;
     }
