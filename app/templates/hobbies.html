@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:title" content="Personal Portfolio">
-    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:title" content="Hobbies">
+    <meta property="og:description" content="My hobbies">
     <meta property="og:url" content="{{ url }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -35,18 +34,20 @@
         </div>
     </header>
 
-    <div class="profile">
-        <div id="profile-picture" class="profile-picture">
-            <img src="{{ url_for('static', filename='img/profile.jpeg') }}" alt="Maksym Yemelianenko">
-        </div>
-        <h1>{{ title }}</h1>
-    </div>
+    <main class="hobbies-page">
+        <section class="hobbies-hero">
+            <h1>Hobbies</h1>
+            <p>Traveling, boxing, and business case competitions.</p>
+        </section>
 
-    <section class="about" aria-labelledby="about-title">
-        <h2 id="about-title">About Me</h2>
-        <h3>Maksym Yemelianenko</h3>
-        <p>Computer Science student at NYU Tandon.</p>
-        <p>Interested in distributed systems, infrastructure, AI tooling, and startup engineering.</p>
-    </section>
+        <section class="hobby-grid" aria-label="Hobby cards">
+            {% for hobby in hobbies %}
+                <article class="hobby-card">
+                    <img src="{{ url_for('static', filename=hobby.image) }}" alt="{{ hobby.name }}">
+                    <h2>{{ hobby.name }}</h2>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
 </body>
 </html>
