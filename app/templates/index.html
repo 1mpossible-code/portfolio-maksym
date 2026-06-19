@@ -43,4 +43,14 @@
             </article>
         {% endfor %}
     </section>
+
+    <section class="travel-map" aria-labelledby="travel-title">
+        <h2 id="travel-title">Places I Have Been To</h2>
+        <div class="map-card" aria-label="Interactive globe showing countries visited">
+            <div id="travel-globe"></div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+    <script src="{{ url_for('static', filename='scripts/travel-globe.js') }}"></script>
 {% endblock %}
