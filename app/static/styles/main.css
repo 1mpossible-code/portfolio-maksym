@@ -77,6 +77,31 @@ body {
     height: 200px;
 }
 
+.about {
+    max-width: 720px;
+    margin: 0 auto 50px auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.about h2 {
+    color: #1d539f;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.about h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.about p {
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
 .banner {
     padding: 20px 0px 50px 0px;
     height: 150px;
