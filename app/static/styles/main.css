@@ -122,6 +122,47 @@ body {
     margin: 8px 0;
 }
 
+.info-section {
+    max-width: 780px;
+    margin: 0 auto 50px auto;
+    padding: 0 24px;
+}
+
+.info-section h2 {
+    color: #1d539f;
+    font-size: 32px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.info-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    border-radius: 16px;
+    background-color: white;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(29, 83, 159, 0.12);
+}
+
+.info-card h3 {
+    font-size: 22px;
+    margin: 0 0 8px 0;
+}
+
+.info-card p {
+    color: #333333;
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 4px 0;
+}
+
+.info-card span {
+    color: #1d539f;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .hobbies-page {
     max-width: 1040px;
     margin: 0 auto 60px auto;

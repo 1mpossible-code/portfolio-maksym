@@ -14,4 +14,20 @@
         <p>Computer Science student at NYU Tandon.</p>
         <p>Interested in distributed systems, infrastructure, AI tooling, and startup engineering.</p>
     </section>
+
+    <section class="info-section" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        {% for item in education %}
+            <article class="info-card">
+                <div>
+                    <h3>{{ item.school }}</h3>
+                    <p>{{ item.degree }}</p>
+                    {% for detail in item.details %}
+                        <p>{{ detail }}</p>
+                    {% endfor %}
+                </div>
+                <span>{{ item.date }}</span>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}
