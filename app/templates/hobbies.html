@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="hobbies-page">
+        <section class="hobbies-hero">
+            <h1>Hobbies</h1>
+            <p>Traveling, boxing, and business case competitions.</p>
+        </section>
+
+        <section class="hobby-grid" aria-label="Hobby cards">
+            {% for hobby in hobbies %}
+                <article class="hobby-card">
+                    <img src="{{ url_for('static', filename=hobby.image) }}" alt="{{ hobby.name }}">
+                    <h2>{{ hobby.name }}</h2>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}
