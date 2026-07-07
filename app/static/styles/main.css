@@ -309,3 +309,107 @@ body {
     font-size: 50px;
     font-weight: 700;
 }
+.timeline-page {
+    max-width: 980px;
+    margin: 0 auto 70px auto;
+    padding: 0 24px;
+}
+
+.timeline-hero {
+    padding: 54px 0 30px 0;
+    text-align: center;
+}
+
+.timeline-hero h1 {
+    color: #1d539f;
+    font-size: 46px;
+    margin: 0 0 12px 0;
+}
+
+.timeline-hero p {
+    color: #333333;
+    font-size: 20px;
+    margin: 0;
+}
+
+.timeline-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.timeline-form,
+.timeline-post {
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 8px 24px rgba(29, 83, 159, 0.14);
+}
+
+.timeline-form {
+    padding: 24px;
+}
+
+.timeline-form h2,
+.timeline-posts h2 {
+    color: #1d539f;
+    margin-top: 0;
+}
+
+.timeline-form label {
+    display: block;
+    color: #333333;
+    font-family: "Roboto", serif;
+    font-weight: 700;
+    margin: 14px 0 6px 0;
+}
+
+.timeline-form input,
+.timeline-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #cfd8e6;
+    border-radius: 10px;
+    padding: 12px;
+    font: inherit;
+}
+
+.timeline-form button {
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    background-color: #1d539f;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 18px;
+    padding: 12px;
+}
+
+.form-message,
+.timeline-email {
+    color: #666666;
+}
+
+.timeline-post {
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.timeline-post h3 {
+    color: #1d539f;
+    margin: 0 0 4px 0;
+}
+
+.timeline-post p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 8px 0 0 0;
+}
+
+@media (max-width: 800px) {
+    .timeline-layout {
+        grid-template-columns: 1fr;
+    }
+}

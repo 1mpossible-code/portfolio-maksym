@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="timeline-page">
+    <section class="timeline-hero">
+        <h1>Timeline</h1>
+        <p>Leave a quick note below.</p>
+    </section>
+
+    <section class="timeline-layout">
+        <form id="timeline-form" class="timeline-form">
+            <h2>Create a post</h2>
+
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="content">Message</label>
+            <textarea id="content" name="content" rows="5" required></textarea>
+
+            <button type="submit">Post</button>
+            <p id="form-message" class="form-message"></p>
+        </form>
+
+        <section class="timeline-posts" aria-labelledby="posts-title">
+            <h2 id="posts-title">Recent posts</h2>
+            <div id="posts"></div>
+        </section>
+    </section>
+</main>
+
+<script>
+const form = document.querySelector('#timeline-form');
+const posts = document.querySelector('#posts');
+const message = document.querySelector('#form-message');
+
+function addPost(post) {
+    const article = document.createElement('article');
+    article.className = 'timeline-post';
+
+    const title = document.createElement('h3');
+    title.textContent = post.name;
+
+    const email = document.createElement('p');
+    email.className = 'timeline-email';
+    email.textContent = post.email;
+
+    const content = document.createElement('p');
+    content.textContent = post.content;
+
+    article.append(title, email, content);
+    posts.appendChild(article);
+}
+
+async function loadPosts() {
+    const response = await fetch('/api/timeline_post');
+    const data = await response.json();
+    posts.innerHTML = '';
+    data.timeline_posts.forEach(addPost);
+}
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    message.textContent = 'Posting...';
+
+    await fetch('/api/timeline_post', {
+        method: 'POST',
+        body: new FormData(form)
+    });
+
+    form.reset();
+    message.textContent = 'Posted!';
+    loadPosts();
+});
+
+loadPosts();
+</script>
+{% endblock %}

@@ -32,6 +32,7 @@ mydb.create_tables([TimelinePost])
 NAV_LINKS = [
     {"name": "Home", "endpoint": "index"},
     {"name": "Hobbies", "endpoint": "hobbies"},
+    {"name": "Timeline", "endpoint": "timeline"},
 ]
 
 EDUCATION = [
@@ -82,6 +83,11 @@ def hobbies():
             "image": "img/hobbies/business-case-competitions.jpeg"},
     ]
     return render_template('hobbies.html', title="Hobbies", hobbies=hobby_cards, url=os.getenv("URL"))
+
+
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title="Timeline", url=os.getenv("URL"))
 
 
 @app.route('/api/timeline_post', methods=['POST'])
