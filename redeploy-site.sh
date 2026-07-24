@@ -4,9 +4,7 @@ cd /root/portfolio-maksym
 
 git fetch && git reset origin/main --hard
 
-source venv/bin/activate
-pip install -r requirements.txt
+docker compose -f docker-compose.prod.yaml down
 
-systemctl daemon-reload
-systemctl restart myportfolio
+docker compose -f docker-compose.prod.yaml up -d --build
 
