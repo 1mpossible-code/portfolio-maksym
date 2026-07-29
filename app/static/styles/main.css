@@ -80,6 +80,13 @@ body {
         font-size: 50px;
         font-weight: 700;
         color: white;
+        margin-bottom: 8px;
+}
+
+.profile-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
+    margin: 0;
 }
 
 .profile img {
