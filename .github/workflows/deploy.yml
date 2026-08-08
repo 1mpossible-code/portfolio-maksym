@@ -7,8 +7,32 @@ on:
   workflow_dispatch:
 
 jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    env:
+      TESTING: true
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Python Virtual Environment
+        run: python -m venv python3-virtualenv
+
+      - name: Install Dependencies
+        run: python3-virtualenv/bin/pip install -r requirements.txt
+
+      - name: Run Tests
+        run: ./run_test.sh
+
   deploy:
-    name: "Deploy to VPS"
+    name: Deploy to VPS
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
@@ -32,3 +56,22 @@ jobs:
 
       - name: Deploy site
         run: ssh my-vps '~/redeploy-site.sh'
+
+      - name: Print container status
+        run: ssh my-vps "cd ${{ secrets.PROJECT_ROOT }} && docker compose -f docker-compose.prod.yaml ps"
+
+      - name: Send success notification
+        run: curl -sS -X POST "$DISCORD_WEBHOOK" -d "content=🚀 Deployment Successful"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+  notify-failure:
+    name: Send failure notification
+    needs: [test, deploy]
+    if: ${{ always() && (needs.test.result == 'failure' || needs.deploy.result == 'failure') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send failure notification
+        run: curl -sS -X POST "$DISCORD_WEBHOOK" -d "content=🚨 Deployment Failed"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
